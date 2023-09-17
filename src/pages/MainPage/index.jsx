@@ -10,7 +10,7 @@ import {
 } from './styled';
 import axios from 'axios';
 import { setupWeather } from '../../utils/weather';
-
+import { weather_url, geo_url } from '../../utils/url_builder';
 
 export default function MainPage() {
   const [city, setCity] = useState('');
@@ -23,21 +23,12 @@ export default function MainPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const geoInfo = await axios.get(
-        `${import.meta.env.VITE_GEO_URL}?q=${city}&limit=5&appid=${
-          import.meta.env.VITE_WEATHER_API_KEY
-        }`,
-      );
-
+      const geoInfo = await axios.get(geo_url(city));
       if (!geoInfo.data[0]) {
         setCityInfo({ city: '', min: 0, max: 0, temp: 0, erro: true });
       } else {
         const weatherInfo = await axios.get(
-          `${import.meta.env.VITE_WEATHER_URL}?lat=${
-            geoInfo.data[0].lat
-          }&lon=${geoInfo.data[0].lon}&units=metric&appid=${
-            import.meta.env.VITE_WEATHER_API_KEY
-          }`,
+          weather_url(geoInfo.data[0].lat, geoInfo.data[0].lon)
         );
 
         const translatedWeather = setupWeather(
