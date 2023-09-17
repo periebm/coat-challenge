@@ -13,7 +13,7 @@ export function weather_url(lat, lon) {
 }
 
 export function forecast_url(lat, lon) {
-  const FORECAST_URL = 'api.openweathermap.org/data/2.5/forecast/daily';
+  const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
-  return `${FORECAST_URL}?lat=${lat}&lon=${lon}&cnt=7&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
+  return `${FORECAST_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
 }
