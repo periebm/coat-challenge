@@ -9,10 +9,11 @@ import {
   StyledButton,
 } from './styled';
 import axios from 'axios';
+import { setupWeather } from '../../utils/weather';
+
 
 export default function MainPage() {
   const [city, setCity] = useState('');
-
   const [cityInfo, setCityInfo] = useState(null);
 
   function handleChange(e) {
@@ -23,7 +24,7 @@ export default function MainPage() {
     e.preventDefault();
     try {
       const geoInfo = await axios.get(
-        `${import.meta.env.VITE_GEO_URL}direct?q=${city}&limit=5&appid=${
+        `${import.meta.env.VITE_GEO_URL}?q=${city}&limit=5&appid=${
           import.meta.env.VITE_WEATHER_API_KEY
         }`,
       );
@@ -32,11 +33,15 @@ export default function MainPage() {
         setCityInfo({ city: '', min: 0, max: 0, temp: 0, erro: true });
       } else {
         const weatherInfo = await axios.get(
-          `${import.meta.env.VITE_WEATHER_URL}weather?lat=${
+          `${import.meta.env.VITE_WEATHER_URL}?lat=${
             geoInfo.data[0].lat
-          }&lon=${geoInfo.data[0].lon}&appid=${
+          }&lon=${geoInfo.data[0].lon}&units=metric&appid=${
             import.meta.env.VITE_WEATHER_API_KEY
           }`,
+        );
+
+        const translatedWeather = setupWeather(
+          weatherInfo.data.weather[0].main,
         );
 
         setCityInfo({
@@ -44,6 +49,8 @@ export default function MainPage() {
           min: weatherInfo.data.main.temp_min,
           max: weatherInfo.data.main.temp_max,
           temp: weatherInfo.data.main.temp,
+          weather: translatedWeather[0],
+          color: translatedWeather[1],
           erro: false,
         });
       }

@@ -1,0 +1,7 @@
+export const clearColor = "#beb72c"
+export const cloudsColor = "gray"
+export const rainColor = "#051085"
+export const snowColor = "#c9c9c9"
+export const thunderstormColor = "#5f1283"
+export const drizzleColor = "#00c3ff"
+export const mistColor = "#c9c9c9"

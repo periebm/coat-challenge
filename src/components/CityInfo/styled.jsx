@@ -4,7 +4,7 @@ export const CityInfoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: gray;
+  background-color: ${(props) => props.color};
   color: white;
   margin-top: 40px;
   padding: 20px 20px 20px 20px;
@@ -12,6 +12,19 @@ export const CityInfoContainer = styled.div`
   height: 100%;
   width: 40%;
 `;
+
+export const ErrorMessage = styled.div`
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8a1c25;
+  color: white;
+  margin-top: 40px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
+  height: 100%;
+  width: 40%;
+`
 
 export const LeftContainer = styled.div`
   div:first-child {
