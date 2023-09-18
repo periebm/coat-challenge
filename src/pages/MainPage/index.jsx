@@ -66,10 +66,9 @@ export default function MainPage() {
           };
         });
         setforecastInfo(formattedForecast);
-        console.log(formattedForecast);
       }
     } catch (err) {
-      console.log(err.response.data);
+      alert(err.response.data);
     }
   }
 
