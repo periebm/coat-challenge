@@ -65,7 +65,6 @@ export default function MainPage() {
             temp: e.main.temp.toFixed(2),
           };
         });
-        console.log(formattedForecast);
         setforecastInfo(formattedForecast);
       }
     } catch (err) {

@@ -6,6 +6,7 @@ export default function Graph({ forecastInfo, cityInfo }) {
   const [maxTemp, setMax] = useState(100);
   const [minTemp, setMin] = useState(0);
 
+
   function findMinMaxTemperature(forecastInfo) {
     if (!forecastInfo || forecastInfo.length === 0) {
       return { min: null, max: null };
@@ -30,13 +31,17 @@ export default function Graph({ forecastInfo, cityInfo }) {
   }
 
   useEffect(() => {
-    const { min, max } = findMinMaxTemperature(forecastInfo);
-    if(min > 0) setMin(0);
-    else if(min < 0) {
-      setMin(Math.floor(min));
+    if (forecastInfo !== undefined) {
+      const { min, max } = findMinMaxTemperature(forecastInfo);
+      if (min > 0) setMin(0);
+      else if (min < 0) {
+        setMin(Math.floor(min));
+      }
+      setMax(Math.ceil(max));
     }
-    setMax(Math.ceil(max));
   }, [forecastInfo]);
+
+  if (cityInfo === null || cityInfo.erro == true || !forecastInfo) return;
 
   return (
     <GraphContainer>
