@@ -1,5 +1,5 @@
 export function geo_url(city) {
-  const GEO_URL = 'http://api.openweathermap.org/geo/1.0/direct';
+  const GEO_URL = 'https://api.openweathermap.org/geo/1.0/direct';
 
   return (
     `${GEO_URL}?q=${city}&limit=5&appid=${import.meta.env.VITE_WEATHER_API_KEY}`
