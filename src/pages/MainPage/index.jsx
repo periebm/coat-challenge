@@ -68,7 +68,6 @@ export default function MainPage() {
         setforecastInfo(formattedForecast);
       }
     } catch (err) {
-      console.log(err.response.data);
     }
   }
 
