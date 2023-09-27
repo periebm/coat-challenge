@@ -11,10 +11,14 @@ export const CityInfoContainer = styled.div`
   border-radius: 20px;
   height: 100%;
   width: 40%;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const ErrorMessage = styled.div`
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: #8a1c25;
@@ -24,7 +28,7 @@ export const ErrorMessage = styled.div`
   border-radius: 20px;
   height: 100%;
   width: 40%;
-`
+`;
 
 export const LeftContainer = styled.div`
   div:first-child {
@@ -38,6 +42,14 @@ export const LeftContainer = styled.div`
       margin-bottom: 3px;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    div:first-child {
+      h2 {
+        font-size: 15px;
+      }
+    }
+  }
 `;
 
 export const RigthContainer = styled.div`
@@ -46,5 +58,11 @@ export const RigthContainer = styled.div`
   h4 {
     font-size: 40px;
     font-weight: 500;
+  }
+
+  @media only screen and (max-width: 768px) {
+    h4 {
+      font-size: 30px;
+    };
   }
 `;

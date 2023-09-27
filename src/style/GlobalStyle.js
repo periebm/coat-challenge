@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 400;
       font-size: 15px;
     }
+        font-size: 40px;
 
 `
 
